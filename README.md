@@ -1,11 +1,11 @@
-# CARE Connect+ 🎓
+# CARE Connect+ 
 ### Smart Campus Marketplace & AI Lost and Found Platform
 
 A secure, full-featured internal campus platform for CARE College of Engineering students and staff.
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.11+
@@ -40,7 +40,7 @@ npm run dev
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 care-connect/
@@ -81,11 +81,10 @@ care-connect/
 
 ---
 
-## ✅ Features Implemented
+## Features Implemented
 
 ### Authentication
 - [x] College email domain validation
-- [x] OTP email verification
 - [x] JWT secure sessions
 - [x] Password hashing (bcrypt)
 - [x] Role auto-detection (student/staff/admin)
@@ -125,7 +124,7 @@ care-connect/
 - [x] Upload interface for visual search
 - [x] Search across marketplace/lost/found
 - [x] Result display with similarity scores
-- [x] ⚠️ Full ML embeddings require CLIP/ResNet deployment (see note)
+- [x] Full ML embeddings require CLIP/ResNet deployment (see note)
 
 ### Secure Messaging (Module 6)
 - [x] One-to-one encrypted chat
@@ -179,7 +178,7 @@ care-connect/
 
 ---
 
-## ⚠️ What Requires Additional Infrastructure
+##  What Requires Additional Infrastructure
 
 | Feature | Status | What's Needed |
 |---------|--------|---------------|
@@ -191,7 +190,7 @@ care-connect/
 
 ---
 
-## 🔧 Configuration (.env)
+## Configuration (.env)
 
 ```env
 MONGODB_URL=mongodb://localhost:27017
@@ -209,7 +208,7 @@ MATCH_THRESHOLD=0.5
 
 ---
 
-## 👤 Default Admin Setup
+## Default Admin Setup
 
 To create an admin user, register normally then run:
 ```python
@@ -219,7 +218,7 @@ db.users.update_one({"email": "admin@care.edu.in"}, {"$set": {"role": "admin"}})
 
 ---
 
-## 📡 API Documentation
+##  API Documentation
 
 After starting the backend, visit:
 - **Swagger UI**: http://localhost:8000/docs
@@ -227,7 +226,7 @@ After starting the backend, visit:
 
 ---
 
-## 🛡️ Tech Stack
+##  Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
