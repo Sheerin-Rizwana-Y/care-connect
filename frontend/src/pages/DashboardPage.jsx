@@ -33,8 +33,8 @@ export default function DashboardPage() {
       try {
         const [listingsRes, lostRes, foundRes, matchesRes, notifRes, urgentRes] = await Promise.allSettled([
           marketplaceAPI.getListings({ limit: 4, sort_by: 'created_at' }),
-          lostItemsAPI.getMy(),
-          foundItemsAPI.getMy(),
+          lostItemsAPI.getAll({ limit: 1 }),
+          foundItemsAPI.getAll({ limit: 1 }),
           matchingAPI.getMyMatches(),
           notificationsAPI.getAll(),
           lostItemsAPI.getAll({ is_urgent: true, limit: 3 }),
@@ -42,8 +42,8 @@ export default function DashboardPage() {
 
         setStats({
           listings: listingsRes.status === 'fulfilled' ? listingsRes.value.data.total : 0,
-          lostItems: lostRes.status === 'fulfilled' ? lostRes.value.data.length : 0,
-          foundItems: foundRes.status === 'fulfilled' ? foundRes.value.data.length : 0,
+          lostItems: lostRes.status === 'fulfilled' ? (lostRes.value.data.total ?? lostRes.value.data.items?.length ?? 0) : 0,
+          foundItems: foundRes.status === 'fulfilled' ? (foundRes.value.data.total ?? foundRes.value.data.items?.length ?? 0) : 0,
           matches: matchesRes.status === 'fulfilled' ? matchesRes.value.data.length : 0,
         });
 
@@ -95,8 +95,8 @@ export default function DashboardPage() {
       {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard icon={ShoppingBag} label="Marketplace Items" value={stats.listings} color="bg-blue-500" to="/marketplace" />
-        <StatCard icon={Search} label="My Lost Reports" value={stats.lostItems} color="bg-red-500" to="/lost-found" />
-        <StatCard icon={Package} label="My Found Reports" value={stats.foundItems} color="bg-green-500" to="/lost-found" />
+        <StatCard icon={Search} label="Campus Lost Reports" value={stats.lostItems} color="bg-red-500" to="/lost-found" />
+        <StatCard icon={Package} label="Campus Found Reports" value={stats.foundItems} color="bg-green-500" to="/lost-found" />
         <StatCard icon={Sparkles} label="AI Matches" value={stats.matches} color="bg-violet-500" to="/matches" />
       </div>
 
